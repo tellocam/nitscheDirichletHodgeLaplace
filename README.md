@@ -25,16 +25,16 @@ cd nitscheDirichletHodgeLaplace
 You can run the experiments either via Docker or with the ```run.sh``` script (the latter requires Conda).
 
 ### Running the experiments with Docker
-Build the Docker image:
+Pull the Docker image:
 ```bash
-docker build -t nhl-experiments .
+docker pull ghcr.io/tellocam/nhl:latest
 ```
 Run the container (using ```sudo``` if necessary):
 ```bash
-    sudo docker run -it --rm \
-    -v "$(pwd)/data:/app/data" \
-    -v "$(pwd)/plots:/app/plots" \
-    nhl-experiments
+    docker run --rm -it \
+    -v $(pwd)/data:/app/data \
+    -v $(pwd)/plots:/app/plots \
+    ghcr.io/tellocam/nhl:latest
 ```
 After execution, two new folders (```data``` and ```plots```) will appear in the root directory of the repository. These folders were created by the container (often with root privileges), so if you want to remove them later, run:
 ```bash
