@@ -1,7 +1,7 @@
 # nitscheDirichletHodgeLaplace
-Repository with all the code for the Hodge Laplacian with Nitsche type enforced Dirichlet boundary conditions in NGSolve. The content of this repository has been created in the context of a masters thesis in Computational Science and Engineering at ETHZ, by Camilo Tello Fachin.
+Repository containing the code for the Hodge Laplacian with Nitsche-type enforced Dirichlet boundary conditions in NGSolve. The content of this repository was created for a master's thesis in Computational Science and Engineering at ETH Zürich by Camilo Tello Fachin.
 ```
-NitscheDirichletHodgeLaplace/
+nitscheDirichletHodgeLaplace/
 ├── src/
 │   ├── __init__.py                 # Exports all submodules as the "nhl" package
 │   ├── autoDiffFunctions.py        # File with autoDiff functions for manufactured solutions
@@ -12,40 +12,40 @@ NitscheDirichletHodgeLaplace/
 ├── oneForms2DdataGeneration.py     # Script for data generation (2D1F)
 ├── oneForms3DdataGeneration.py     # Script for data generation (3D1F)
 ├── twoForms3DdataGeneration.py     # Script for data generation (3D2F)
-├── run.sh                          # Bash script for environment setup and generating data and plots
-├── Dockerfile                      
+├── run.sh                          # Bash script for environment setup and generating data/plots
+├── Dockerfile
 └── README.md
 ```
 ## Setup Instructions
-First you have to clone the repository
+First, clone the repository:
 ```bash
 git clone https://github.com/tellocam/nitscheDirichletHodgeLaplace.git
+cd nitscheDirichletHodgeLaplace
 ```
-You can run the experiments Either Docker or with bash run.sh (conda required for the latter).
+You can run the experiments either via Docker or with the ```run.sh``` script (the latter requires Conda).
 
 ### Running the experiments with Docker
-If you have Docker on your system you can start with building the image
+Build the Docker image:
 ```bash
 docker build -t nhl-experiments .
 ```
-After you have successfully built the image, you run the following code
+Run the container (using ```sudo``` if necessary):
 ```bash
     sudo docker run -it --rm \
     -v "$(pwd)/data:/app/data" \
     -v "$(pwd)/plots:/app/plots" \
     nhl-experiments
 ```
-After execution you will have 2 new folders in the root directory of the repository,
-data & plots. Since they were created with root privilege in the container, you can remove them after your done by running the following command in the root directory of the repository
+After execution, two new folders (```data``` and ```plots```) will appear in the root directory of the repository. These folders were created by the container (often with root privileges), so if you want to remove them later, run:
 ```bash
 sudo rm -rf data/ plots/
 ```
 
 ### Using the Provided Bash Script
-A bash script (`run.sh`) is provided to help you set up a Conda environment and run the main Python scripts.
+A Bash script (```run.sh```) is provided to help you set up a Conda environment and run the main Python scripts.
 
 1. **Check for Conda Installation**
-The script checks if Conda is installed. If it is not, you will be prompted with instructions on how to install Miniconda. If you don't have Conda installed, follow these commands manually:
+The script checks if Conda is installed. If it is not, you will be prompted with instructions to install Miniconda. If you don’t have Conda installed, follow these commands manually:
 ```bash
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
@@ -54,7 +54,7 @@ The script checks if Conda is installed. If it is not, you will be prompted with
 2. **Make the bashscript executable and run it**
 ```bash
     chmod +x run.sh
-    ./run.sh```
+    ./run.sh
 ```
 
 3. **If you prefer to run the files manually**
@@ -71,5 +71,21 @@ The script checks if Conda is installed. If it is not, you will be prompted with
 ```
 
 4. **Use of the repository**
-This repository is mainly for the purpose of recreating the numerical experiments conducted in the aforementioned thesis.
-If you wish to explore other parameter and function configurations you can do so in the files oneForms2DdataGeneration.py, oneForms3DdataGeneration.py, twoForms3DdataGeneration.py. After the library imports, you can change the tested orders, meshsizes, Cw values and manufactured solutions. After you adapted the inputs, just rerun ./run.sh. Note that your plots and data from before will be overwritten. If you intend to keep them, rename them. You can also rename the folder. The script will create a new folder with the new result.
+
+This repository is primarily for recreating the numerical experiments conducted in the aforementioned thesis. If you wish to explore different parameters or manufactured solutions, you can modify the following files:
+
+```oneForms2DdataGeneration.py```
+
+```oneForms3DdataGeneration.py```
+
+```twoForms3DdataGeneration.py```
+
+After changing orders, mesh sizes, Cw values etc., simply re-run:
+```bash
+    ./run.sh
+```
+Note: Your previous data and plots will be overwritten after a rerun. 
+If you intend to keep them, rename or move them before re-running. 
+You could also rename the folder in the scripts; a new folder with the updated results will be created.
+
+That’s it! Feel free to reach out if you have any questions or run into any issues.
