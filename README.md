@@ -29,7 +29,7 @@ Pull the Docker image:
 ```bash
 docker pull ghcr.io/tellocam/nhl:latest
 ```
-Run the container (using ```sudo``` if necessary):
+Run the container:
 ```bash
     docker run --rm -it \
     -v $(pwd)/data:/app/data \

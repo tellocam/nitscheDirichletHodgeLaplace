@@ -5,6 +5,6 @@ RUN conda install -y numpy pandas matplotlib scipy \
     && conda clean -afy
 COPY . /app
 
-RUN chmod +x run.sh
+RUN chmod +x dockerrun.sh
 
 CMD ["./dockerRun.sh"]
