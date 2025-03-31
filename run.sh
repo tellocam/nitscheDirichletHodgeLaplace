@@ -27,6 +27,18 @@ echo "Installing required packages..."
 conda install -y numpy pandas matplotlib scipy
 pip install ngsolve
 
+# Check if the "data" directory exists; if not, create it.
+if [ ! -d "data" ]; then
+    mkdir data
+    echo "Created directory: data"
+fi
+
+# Check if the "plots" directory exists; if not, create it.
+if [ ! -d "plots" ]; then
+    mkdir plots
+    echo "Created directory: plots"
+fi
+
 # Running files, here please comment and uncommend the ones you are not interested in after the first run :-)
 echo "Running data generation for 2D 1-forms"
 python3 oneForms2DdataGeneration.py
