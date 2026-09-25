@@ -1,5 +1,5 @@
 # nitscheDirichletHodgeLaplace
-Repository containing the code for the Hodge Laplacian with Nitsche-type enforced Dirichlet boundary conditions in NGSolve. The content of this repository was created for a master's thesis in Computational Science and Engineering at ETH Zürich by Camilo Tello Fachin.
+Repository containing the code for the Hodge Laplacian with Nitsche-type enforced Dirichlet boundary conditions in NGSolve. The content of this repository was created for a master's thesis in Computational Science and Engineering at TU Wien by Camilo Tello Fachin.
 ```
 nitscheDirichletHodgeLaplace/
 ├── src/
